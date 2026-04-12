@@ -3,6 +3,6 @@ module com.norbjdk.picjeditor {
     requires javafx.fxml;
 
 
-    opens com.norbjdk.picjeditor to javafx.fxml;
-    exports com.norbjdk.picjeditor;
+    opens com.norbjdk.picjeditor.app to javafx.fxml;
+    exports com.norbjdk.picjeditor.app;
 }
