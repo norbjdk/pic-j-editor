@@ -5,7 +5,9 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.text.Font;
 
 public final class ButtonFactory {
-    private ButtonFactory() {}
+    private ButtonFactory() {
+        throw new UnsupportedOperationException("Utility class! No instance allowed.");
+    }
 
     /**
      * ButtonFactory - Button level 1
