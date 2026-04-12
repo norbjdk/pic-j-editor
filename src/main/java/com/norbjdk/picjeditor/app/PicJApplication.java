@@ -1,0 +1,21 @@
+package com.norbjdk.picjeditor.app;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class PicJApplication extends Application {
+    private static final int MIN_WIDTH = 1200;
+    private static final int MIN_HEIGHT = 650;
+
+    @Override
+    public void start(Stage primaryStage) {
+        final MainWindow mainWindow = new MainWindow();
+
+        primaryStage.setTitle("Pic-J Editor");
+        primaryStage.setMinWidth(MIN_WIDTH);
+        primaryStage.setMinHeight(MIN_HEIGHT);
+        primaryStage.setScene(mainWindow.getScene());
+
+        primaryStage.show();
+    }
+}
