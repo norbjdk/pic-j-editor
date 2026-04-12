@@ -42,7 +42,7 @@ public class MenuBar extends HBox implements Presentable {
     @Override
     public void setupStyle() {
         this.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/norbjdk/picjeditor/styles/components.css")).toExternalForm());
-        this.getStyleClass().add("menu-bar");
+        this.getStyleClass().add("menubar");
     }
 
     @Override

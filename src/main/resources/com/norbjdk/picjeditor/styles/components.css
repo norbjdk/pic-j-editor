@@ -1,4 +1,47 @@
 /*
+================ MENU BAR ================
+ */
+
+.menubar {
+    -fx-background-color: transparent;
+    -fx-spacing: 10px;
+}
+
+.menubar .container {
+    -fx-background-color: transparent;
+    -fx-spacing: 8px;
+}
+
+.menubar .menu {
+    -fx-background-color: transparent;
+    -fx-padding: 6px 10px;
+    -fx-text-fill: #6b6358;
+    -fx-font-size: 13px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+}
+
+.menubar .menu:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.51);
+    -fx-background-radius: 4px;
+}
+
+.menubar .menu:showing {
+    -fx-background-color: #9eacbd;
+    -fx-text-fill: white;
+}
+
+.menubar .menu .label {
+    -fx-text-fill: #6b6358;
+}
+
+.menu-bar .menu:hover .label,
+.menu-bar .menu:showing .label {
+    -fx-text-fill: #6b6358;
+}
+
+/*
 ================ NAVIGATION BAR ================
  */
 
