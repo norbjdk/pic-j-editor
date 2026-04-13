@@ -7,11 +7,9 @@ import com.norbjdk.picjeditor.ui.model.ViewName;
 import com.norbjdk.picjeditor.ui.util.ButtonFactory;
 import com.norbjdk.picjeditor.ui.util.IconUtil;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 
