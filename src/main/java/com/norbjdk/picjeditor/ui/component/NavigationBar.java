@@ -1,20 +1,23 @@
 package com.norbjdk.picjeditor.ui.component;
 
+import com.norbjdk.picjeditor.core.event.EventBus;
+import com.norbjdk.picjeditor.core.event.dto.ChangeViewRequestedEvent;
 import com.norbjdk.picjeditor.ui.model.Presentable;
+import com.norbjdk.picjeditor.ui.model.ViewName;
 import com.norbjdk.picjeditor.ui.util.ButtonFactory;
 import com.norbjdk.picjeditor.ui.util.IconUtil;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 
 import java.util.Objects;
 
 public class NavigationBar extends HBox implements Presentable {
+    private final EventBus eventBus = EventBus.getInstance();
+
     private Button homeBtn;
     private Button editorBtn;
     private Button collectionBtn;
@@ -67,7 +70,26 @@ public class NavigationBar extends HBox implements Presentable {
 
     @Override
     public void setupEventHandlers() {
+        homeBtn.setOnAction(actionEvent -> handleHomeButtonClicked());
+        editorBtn.setOnAction(actionEvent -> handleEditorButtonClicked());
+        collectionBtn.setOnAction(actionEvent -> handleCollectionButtonClicked());
+        settingsBtn.setOnAction(actionEvent -> handleSettingsButtonClicked());
+    }
 
+    private void handleHomeButtonClicked() {
+        eventBus.publish(new ChangeViewRequestedEvent(ViewName.HOME));
+    }
+
+    private void handleEditorButtonClicked() {
+        eventBus.publish(new ChangeViewRequestedEvent(ViewName.EDITOR));
+    }
+
+    private void handleCollectionButtonClicked() {
+        eventBus.publish(new ChangeViewRequestedEvent(ViewName.COLLECTION));
+    }
+
+    private void handleSettingsButtonClicked() {
+        eventBus.publish(new ChangeViewRequestedEvent(ViewName.SETTINGS));
     }
 
     private Region createSpacer() {

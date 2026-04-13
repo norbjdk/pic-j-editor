@@ -1,8 +1,14 @@
 package com.norbjdk.picjeditor.app;
 
+import com.norbjdk.picjeditor.core.event.EventBus;
+import com.norbjdk.picjeditor.core.event.dto.ChangeViewRequestedEvent;
+import com.norbjdk.picjeditor.core.event.dto.ViewChangedEvent;
 import com.norbjdk.picjeditor.ui.component.MenuBar;
 import com.norbjdk.picjeditor.ui.component.NavigationBar;
 import com.norbjdk.picjeditor.ui.component.StatusBar;
+import com.norbjdk.picjeditor.ui.model.ViewName;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -27,6 +33,8 @@ public class MainWindow {
         initComponents();
         setupStyles();
         layoutComponents();
+        setupEventListeners();
+        EventBus.getInstance().publish(new ChangeViewRequestedEvent(ViewName.HOME));
     }
 
     private void initComponents() {
@@ -38,12 +46,30 @@ public class MainWindow {
     private void setupStyles() {
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/norbjdk/picjeditor/styles/views.css")).toExternalForm());
         root.getStyleClass().add("main-window");
+
+        VBox.setMargin(navigationBar, new Insets(14));
     }
 
     private void layoutComponents() {
-        root.setTop(new VBox(0, menuBar, navigationBar));
+        final VBox topContainer = new VBox(0, menuBar, navigationBar);
+
+        root.setTop(topContainer);
         root.setBottom(statusBar);
     }
+
+    private void setupEventListeners() {
+        EventBus.getInstance().subscribe(ViewChangedEvent.class, this::handleViewChanged);
+    }
+
+    private void handleViewChanged(ViewChangedEvent event) {
+        final var newView = (Node) event.getView();
+
+        if (newView != null && root.getCenter() != newView) {
+            root.setCenter(newView);
+            BorderPane.setMargin(newView, new Insets(20));
+        }
+    }
+
 
     public BorderPane getRoot() {
         return root;
