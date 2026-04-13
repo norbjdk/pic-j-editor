@@ -1,5 +1,7 @@
 package com.norbjdk.picjeditor.ui.view;
 
+import com.norbjdk.picjeditor.core.event.EventBus;
+import com.norbjdk.picjeditor.core.event.dto.OpenPictureRequestedEvent;
 import com.norbjdk.picjeditor.ui.model.Presentable;
 import com.norbjdk.picjeditor.ui.model.Viewable;
 import javafx.geometry.Insets;
@@ -19,6 +21,7 @@ public class HomeView extends ScrollPane implements Presentable, Viewable {
 
     private VBox contentContainer;
     private Label header;
+    private Button openImageButton;
 
     public HomeView() {
         present();
@@ -69,7 +72,11 @@ public class HomeView extends ScrollPane implements Presentable, Viewable {
 
     @Override
     public void setupEventHandlers() {
+        openImageButton.setOnAction(actionEvent -> handleOpenImageButton());
+    }
 
+    private void handleOpenImageButton() {
+        EventBus.getInstance().publish(new OpenPictureRequestedEvent());
     }
 
     private HBox createComponentContainer(Insets padding, String style, Node ... components) {
@@ -143,10 +150,10 @@ public class HomeView extends ScrollPane implements Presentable, Viewable {
         step3.getStyleClass().add("step-text");
         step3.setWrapText(true);
 
-        final Button openButton = new Button("Open Image");
-        openButton.getStyleClass().add("primary-button");
+        openImageButton = new Button("Open Image");
+        openImageButton.getStyleClass().add("primary-button");
 
-        stepsBox.getChildren().addAll(step1, step2, step3, openButton);
+        stepsBox.getChildren().addAll(step1, step2, step3, openImageButton);
         container.getChildren().addAll(titleLabel, stepsBox);
 
         return container;
