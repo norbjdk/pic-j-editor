@@ -1,5 +1,6 @@
 package com.norbjdk.picjeditor.app;
 
+import com.norbjdk.picjeditor.ui.manager.ViewManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -17,5 +18,11 @@ public class PicJApplication extends Application {
         primaryStage.setScene(mainWindow.getScene());
 
         primaryStage.show();
+    }
+
+    @Override
+    public void init() {
+        final ViewManager viewManager = ViewManager.getInstance();
+        System.out.println("Initialized View Manager");
     }
 }
