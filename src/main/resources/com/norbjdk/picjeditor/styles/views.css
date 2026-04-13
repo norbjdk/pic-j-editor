@@ -1,3 +1,122 @@
 .root {
     -fx-background-color: #F3F3F3;
 }
+
+/*
+================ HOME VIEW ================
+ */
+
+.home-view {
+    -fx-background-color: transparent;
+}
+
+.home-container {
+    -fx-background-color: linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.73));
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+}
+
+.home-header {
+    -fx-text-fill: #050505;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+.readme-container {
+    -fx-padding: 20;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 4px;
+    -fx-max-width: 600;
+}
+
+.h1 {
+    -fx-font-family: "Segoe UI Variable Display", "Segoe UI Bold";
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+    -fx-padding: 0 0 10 0;
+    -fx-border-color: #d0d7de;
+    -fx-border-width: 0 0 1 0;
+}
+
+.subtitle {
+    -fx-font-family: "Segoe UI Variable Text", "Segoe UI";
+    -fx-font-size: 16px;
+    -fx-text-fill: #57606a;
+    -fx-padding: 5 0 20 0;
+}
+
+.h2 {
+    -fx-font-family: "Segoe UI Variable Display", "Segoe UI Semibold";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #24292f;
+    -fx-padding: 25 0 10 0;
+}
+
+.body-text {
+    -fx-font-family: "Segoe UI Variable Text", "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-text-fill: #24292f;
+    -fx-line-spacing: 5px;
+}
+
+.author-name {
+    -fx-font-family: "Segoe UI Variable Text", "Segoe UI Semibold";
+    -fx-font-size: 15px;
+    -fx-text-fill: #24292f;
+}
+
+.github-link {
+    -fx-font-family: "Segoe UI Variable Text", "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-text-fill: #0969da;
+    -fx-cursor: hand;
+}
+
+.github-link:hover {
+    -fx-underline: true;
+}
+
+.instruction-container {
+    -fx-padding: 20;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 4px;
+    -fx-border-color: #d0d7de;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+}
+
+.step-text {
+    -fx-font-family: "Segoe UI Variable Text", "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-text-fill: #24292f;
+    -fx-font-weight: 500;
+}
+
+.primary-button {
+    -fx-background-color: #1f883d;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Variable Display", "Segoe UI Bold";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-margin: 10 0 0 0;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1a7f37;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #187733;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.steps-box {
+    -fx-padding: 10 0 0 0;
+}
