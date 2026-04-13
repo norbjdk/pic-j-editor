@@ -2,10 +2,14 @@ package com.norbjdk.picjeditor.ui.component;
 
 import com.norbjdk.picjeditor.core.event.EventBus;
 import com.norbjdk.picjeditor.core.event.dto.ChangeViewRequestedEvent;
+import com.norbjdk.picjeditor.core.picture.ImageData;
+import com.norbjdk.picjeditor.core.project.ProjectManager;
 import com.norbjdk.picjeditor.ui.model.Presentable;
 import com.norbjdk.picjeditor.ui.model.ViewName;
 import com.norbjdk.picjeditor.ui.util.ButtonFactory;
 import com.norbjdk.picjeditor.ui.util.IconUtil;
+import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -65,7 +69,18 @@ public class NavigationBar extends HBox implements Presentable {
 
     @Override
     public void setupEventListeners() {
+        ProjectManager.getInstance().getCurrentProject().addListener((obs, oldProject, newProject) -> {
+            if (newProject != null) {
+                bindEditorBtnToProject(newProject);
+            } else {
+                Platform.runLater(() -> editorBtn.setDisable(true));
+            }
+        });
 
+        var current = ProjectManager.getInstance().getCurrentProject().get();
+        if (current != null) {
+            bindEditorBtnToProject(current);
+        }
     }
 
     @Override
@@ -74,6 +89,14 @@ public class NavigationBar extends HBox implements Presentable {
         editorBtn.setOnAction(actionEvent -> handleEditorButtonClicked());
         collectionBtn.setOnAction(actionEvent -> handleCollectionButtonClicked());
         settingsBtn.setOnAction(actionEvent -> handleSettingsButtonClicked());
+    }
+
+    private void bindEditorBtnToProject(com.norbjdk.picjeditor.core.project.Project project) {
+        Platform.runLater(() -> editorBtn.setDisable(project.getImages().isEmpty()));
+
+        project.getImages().addListener((ListChangeListener<ImageData>) change ->
+                Platform.runLater(() -> editorBtn.setDisable(project.getImages().isEmpty()))
+        );
     }
 
     private void handleHomeButtonClicked() {
