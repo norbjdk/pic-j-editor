@@ -3,6 +3,7 @@ package com.norbjdk.picjeditor.app;
 import com.norbjdk.picjeditor.ui.component.MenuBar;
 import com.norbjdk.picjeditor.ui.component.NavigationBar;
 import com.norbjdk.picjeditor.ui.component.StatusBar;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -41,7 +42,10 @@ public class MainWindow {
     }
 
     private void layoutComponents() {
-        root.setTop(new VBox(0, menuBar, navigationBar));
+        final VBox topContainer = new VBox(0, menuBar, navigationBar);
+        VBox.setMargin(navigationBar, new Insets(14));
+
+        root.setTop(topContainer);
         root.setBottom(statusBar);
     }
 
